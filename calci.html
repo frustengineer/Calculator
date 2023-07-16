@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="calci.css" />
+    <link rel="stylesheet" href="calci.js" />
+
+</head>
+<body>
+<div id="app">
+    <div id="calculator">
+        <div id="input"></div>
+        <div id="keyboard">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div class="black">+</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div class="black">-</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div class="black">*</div>
+            <div>.</div>
+            <div>0</div>
+            <div class="black">=</div>
+            <div class="black">/</div>
+            <div class="red">C</div>
+            <div class="green">Back</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+  const num = document.querySelectorAll("#keyboard>div");
+  const dis = document.querySelector("#input");
+
+  // console.log(dis);
+  for (i = 0; i < num.length; i++) {
+    num[i].addEventListener("click", cal);
+  }
+
+  function cal() {
+    let tar = event.target.innerText;
+    let a = dis.innerText;
+    let b = a.slice(0, -1);
+
+    switch (tar) {
+      case "C":
+        dis.innerText = "";
+        break;
+
+      case "=":
+        if (a[0] == "/" || a[0] == "*") {
+          dis.innerText = "Please check the input";
+        } else if (dis.innerText != "") {
+          dis.innerText = eval(dis.innerText);
+        }
+        break;
+      case "Back":
+        dis.innerText = b;
+
+        break;
+      default:
+        dis.innerText += tar;
+    }
+  }
+</script>
+
+<!-- mm -->
